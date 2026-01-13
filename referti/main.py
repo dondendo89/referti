@@ -12,17 +12,17 @@ import uvicorn
 from typing import Optional
 
 # Import relativi
-from .services.openai_service import generate_report
-from .services.pdf_service import create_pdf
-from .services.word_service import create_word
-from .services.email_service import send_email
-from .services.template_builder import create_tosca_template, create_mantini_template
-from .protocols.shoulder import get_system_prompt_shoulder, get_user_prompt_shoulder
-from .protocols.achilles import get_system_prompt_achilles, get_user_prompt_achilles
+from services.openai_service import generate_report
+from services.pdf_service import create_pdf
+from services.word_service import create_word
+from services.email_service import send_email
+from services.template_builder import create_tosca_template, create_mantini_template
+from protocols.shoulder import get_system_prompt_shoulder, get_user_prompt_shoulder
+from protocols.achilles import get_system_prompt_achilles, get_user_prompt_achilles
 
 # Carica variabili d'ambiente
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ENV_PATH = os.path.join(os.path.dirname(BASE_DIR), ".env")
+ENV_PATH = os.path.join(BASE_DIR, ".env")
 if os.path.exists(ENV_PATH):
     load_dotenv(ENV_PATH)
 
