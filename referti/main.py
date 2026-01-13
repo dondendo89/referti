@@ -19,6 +19,7 @@ from services.email_service import send_email
 from services.template_builder import create_tosca_template, create_mantini_template
 from protocols.shoulder import get_system_prompt_shoulder, get_user_prompt_shoulder
 from protocols.achilles import get_system_prompt_achilles, get_user_prompt_achilles
+from datetime import datetime
 
 # Carica variabili d'ambiente
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -60,7 +61,7 @@ async def handle_form(
         user_prompt = get_user_prompt_shoulder({
             "patient_name": patient_name,
             "patient_dob": patient_dob,
-            "date": "10.12.2025", # TODO: rendere dinamica
+            "date": datetime.now().strftime("%d.%m.%Y"),
             "indications": indications,
             "findings": findings,
             "side": side
@@ -70,7 +71,7 @@ async def handle_form(
         user_prompt = get_user_prompt_achilles({
             "patient_name": patient_name,
             "patient_dob": patient_dob,
-            "date": "10.12.2025", # TODO: rendere dinamica
+            "date": datetime.now().strftime("%d.%m.%Y"),
             "indications": indications,
             "findings": findings,
             "side": side
